@@ -11,8 +11,8 @@ const router = new Router({
   base: '/',
   mode: 'history',
   routes: [{
-    path: '/',
-    component: () => import('@/pages/main/Index')
+    path: '/login',
+    component: () => import('@/pages/authentication/Login')
   }, {
     path: '/login',
     component: () => import('@/pages/authentication/Login')
