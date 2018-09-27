@@ -1,0 +1,39 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../common/mixins",
+      "./mixins"
+    ]
+  },
+  "User": {
+    "dataSource": "ipotekark",
+    "public": true
+  },
+  "AccessToken": {
+    "dataSource": "ipotekark",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "ipotekark",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "ipotekark",
+    "public": false,
+    "options": {
+      "strictObjectIDCoercion": true
+    }
+  },
+  "Role": {
+    "dataSource": "ipotekark",
+    "public": false
+  }
+}
