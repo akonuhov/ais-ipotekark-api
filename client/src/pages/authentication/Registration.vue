@@ -35,24 +35,22 @@
             </div>
             <!-- / Logo -->
 
-            <h4 class="text-center text-lighter font-weight-normal mt-5 mb-0">АИС ипотечного кредитования</h4>
+            <h4 class="text-center text-lighter font-weight-normal mt-5 mb-0">Регистрация АИС ипотечного фонда</h4>
 
             <!-- Form -->
             <form class="my-5">
+              <b-form-group label="Имя">
+                <b-input v-model="credentials.name" />
+              </b-form-group>
               <b-form-group label="Email">
                 <b-input v-model="credentials.email" />
               </b-form-group>
-              <b-form-group>
-                <div slot="label" class="d-flex justify-content-between align-items-end">
-                  <div>Пароль</div>
-                  <a href="javascript:void(0)" class="d-block small">Забыли пароль?</a>
-                </div>
+              <b-form-group label="Пароль">
                 <b-input type="password" v-model="credentials.password" />
               </b-form-group>
 
               <div class="d-flex justify-content-between align-items-center m-0">
-                <!-- <b-check v-model="credentials.rememberMe" class="m-0">Запомнить</b-check> -->
-                <b-btn variant="primary" @click="onSubmitLogin">Войти в систему</b-btn>
+                <b-btn variant="primary" @click="onSubmitLogin">Регистрировать</b-btn>
               </div>
             </form>
             <!-- / Form -->
@@ -78,18 +76,16 @@ export default {
   },
   data: () => ({
     credentials: {
+      name: '',
       email: '',
       password: ''
     }
   }),
   methods: {
     onSubmitLogin () {
-      axios.post('http://ais.ipotekark.ru:3000/api/users/login', this.credentials)
+      axios.post('http://ais.ipotekark.ru:3000/api/users', this.credentials)
         .then(res => {
-          localStorage.setItem('token', res.id)
-          localStorage.setItem('userId', res.userId)
-          localStorage.setItem('authenticated', true)
-          this.$router.push('/')
+          console.log(res)
         })
         .catch(err => {
           console.log(err)

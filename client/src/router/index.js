@@ -11,11 +11,29 @@ const router = new Router({
   base: '/',
   mode: 'history',
   routes: [{
-    path: '/',
-    component: () => import('@/pages/authentication/Login')
-  }, {
     path: '/login',
     component: () => import('@/pages/authentication/Login')
+  }, {
+    path: '/registration',
+    component: () => import('@/pages/authentication/Registration')
+  }, {
+    path: '/',
+    component: () => import('@/pages/main/Index'),
+    meta: {
+      authenticated: true
+    }
+  }, {
+    path: '/task-list',
+    component: () => import('@/pages/main/TaskList'),
+    meta: {
+      authenticated: true
+    }
+  }, {
+    path: '/credit-object',
+    component: () => import('@/pages/credit-object/CreditObject'),
+    meta: {
+      authenticated: true
+    }
   }]
 })
 
@@ -29,12 +47,28 @@ router.afterEach(() => {
   globals().scrollTop(0, 0)
 })
 
-router.beforeEach((to, from, next) => {
-  // Set loading state
-  document.body.classList.add('app-loading')
+// router.beforeEach((to, from, next) => {
+//   // Set loading state
+//   document.body.classList.add('app-loading')
+//
+//   // Add tiny timeout to finish page transition
+//   setTimeout(() => next(), 10)
+// })
 
-  // Add tiny timeout to finish page transition
-  setTimeout(() => next(), 10)
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.authenticated)) {
+    if (!localStorage.getItem('authenticated')) {
+      next({
+        path: '/login',
+        query: { redirect: to.fullPath }
+      })
+      document.body.classList.add('app-loading')
+    } else {
+      next()
+    }
+  } else {
+    next()
+  }
 })
 
 export default router

@@ -1,15 +1,149 @@
 <template lang="html">
   <layout-flex>
-    <h1>asasas</h1>
+    <div class="row">
+      <div class="col-12">
+        <h4 class="font-weight-bold py-3 mb-4">Доска задач</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 mb-3">
+        <div class="row">
+          <div class="col-3 mb-3">
+            <b-card no-body>
+              <b-card-header header-tag="h6" class="text-center">Новые</b-card-header>
+              <draggable v-model="newTasks" :options="draggableOptions" class="kanban-box px-2 pt-2">
+                <div v-for="task in newTasks" class="ui-bordered p-2 mb-2">
+                  <b-dropdown variant="default btn-xs btn-round icon-btn borderless md-btn-flat hide-arrow" class="kanban-board-actions float-right ml-2" :right="!isRTL">
+                    <template slot="button-content"><i class="ion ion-ios-more"></i></template>
+                    <b-dropdown-item href="javascript:void(0)">Редактировать</b-dropdown-item>
+                    <b-dropdown-item href="javascript:void(0)">Удалить</b-dropdown-item>
+                  </b-dropdown>
+                  {{task.text}}
+                  <span v-if="task.tags && task.tags.length">
+                    <span v-for="tag in task.tags" :class="`badge-${tags[tag].color}`" class="badge ml-1">{{tags[tag].title}}</span>
+                  </span>
+                </div>
+              </draggable>
+              <b-card-footer class="text-center py-2">
+                <a href="javascript:void(0)"><i class="ion ion-md-add"></i>&nbsp; Добавить задачу</a>
+              </b-card-footer>
+            </b-card>
+          </div>
+          <div class="col-3 mb-3">
+            <b-card no-body border-variant="info">
+              <b-card-header header-tag="h6" header-text-variant="info" class="text-center">В работе</b-card-header>
+              <draggable v-model="inProgressTasks" :options="draggableOptions" class="kanban-box px-2 pt-2">
+                <div v-for="task in inProgressTasks" class="ui-bordered p-2 mb-2">
+                  <b-dropdown variant="default btn-xs btn-round icon-btn borderless md-btn-flat hide-arrow" class="kanban-board-actions float-right ml-2" :right="!isRTL">
+                    <template slot="button-content"><i class="ion ion-ios-more"></i></template>
+                    <b-dropdown-item href="javascript:void(0)">Редактировать</b-dropdown-item>
+                    <b-dropdown-item href="javascript:void(0)">Удалить</b-dropdown-item>
+                  </b-dropdown>
+                  {{task.text}}
+                  <span v-if="task.tags && task.tags.length">
+                    <span v-for="tag in task.tags" :class="`badge-${tags[tag].color}`" class="badge ml-1">{{tags[tag].title}}</span>
+                  </span>
+                </div>
+              </draggable>
+            </b-card>
+          </div>
+          <div class="col-3 mb-3">
+            <b-card no-body border-variant="warning">
+              <b-card-header header-tag="h6" header-text-variant="warning" class="text-center">Проверяется</b-card-header>
+              <draggable v-model="testTasks" :options="draggableOptions" class="kanban-box px-2 pt-2">
+                <div v-for="task in testTasks" class="ui-bordered p-2 mb-2">
+                  <b-dropdown variant="default btn-xs btn-round icon-btn borderless md-btn-flat hide-arrow" class="kanban-board-actions float-right ml-2" :right="!isRTL">
+                    <template slot="button-content"><i class="ion ion-ios-more"></i></template>
+                    <b-dropdown-item href="javascript:void(0)">Редактировать</b-dropdown-item>
+                    <b-dropdown-item href="javascript:void(0)">Удалить</b-dropdown-item>
+                  </b-dropdown>
+                  {{task.text}}
+                  <span v-if="task.tags && task.tags.length">
+                    <span v-for="tag in task.tags" :class="`badge-${tags[tag].color}`" class="badge ml-1">{{tags[tag].title}}</span>
+                  </span>
+                </div>
+              </draggable>
+            </b-card>
+          </div>
+          <div class="col-3 mb-3">
+            <b-card no-body border-variant="success">
+              <b-card-header header-tag="h6" header-text-variant="success" class="text-center">Выполненные</b-card-header>
+              <draggable v-model="doneTasks" :options="draggableOptions" class="kanban-box px-2 pt-2">
+                <div v-for="task in doneTasks" class="ui-bordered p-2 mb-2">
+                  <b-dropdown variant="default btn-xs btn-round icon-btn borderless md-btn-flat hide-arrow" class="kanban-board-actions float-right ml-2" :right="!isRTL">
+                    <template slot="button-content"><i class="ion ion-ios-more"></i></template>
+                    <b-dropdown-item href="javascript:void(0)">Редактировать</b-dropdown-item>
+                    <b-dropdown-item href="javascript:void(0)">Удалить</b-dropdown-item>
+                  </b-dropdown>
+                  {{task.text}}
+                  <span v-if="task.tags && task.tags.length">
+                    <span v-for="tag in task.tags" :class="`badge-${tags[tag].color}`" class="badge ml-1">{{tags[tag].title}}</span>
+                  </span>
+                </div>
+              </draggable>
+              <b-card-footer class="text-center py-2">
+                <a href="javascript:void(0)"><i class="ion ion-md-close"></i>&nbsp; Очистить выполненные задачи</a>
+              </b-card-footer>
+            </b-card>
+          </div>
+        </div>
+      </div>
+    </div>
   </layout-flex>
 </template>
 
 <script>
-import Layout2Flex from '@/layout/Layout2Flex'
+import Layout2Flex from '@/layout/Layout2'
+import draggable from 'vuedraggable'
 export default {
   name: 'PageMain',
+  data: () => ({
+    // Tags
+    tags: {
+      clients: { title: 'Clients', color: 'success' },
+      important: { title: 'Important', color: 'danger' },
+      social: { title: 'Social', color: 'info' },
+      other: { title: 'Other', color: 'warning' }
+    },
+
+    newTasks: [
+      { text: 'New blog layout' },
+      { text: 'Create UI design model', tags: ['clients'] },
+      { text: 'Another icon set' },
+      { text: 'iOS application design mockups' }
+    ],
+
+    inProgressTasks: [
+      { text: 'New icons set for an iOS app', tags: ['other'] },
+      { text: 'Create ad campaign banners set' }
+    ],
+
+    testTasks: [
+      { text: 'Help Web devs with HTML integration' },
+      { text: 'UI/UX design review', tags: ['important'] },
+      { text: 'Marketing campaign review' },
+      { text: 'Fix website issues on mobile' },
+      { text: 'Create landing page for a new app', tags: ['social'] }
+    ],
+
+    doneTasks: [
+      { text: 'Edit the draft for the icons', tags: ['important'] },
+      { text: 'Edit the draft for the icons' },
+      { text: 'Edit the draft for the icons' }
+    ],
+
+    draggableOptions: {
+      animation: 150,
+      group: {
+        name: 'kanban-board',
+        put: true,
+        pull: true
+      }
+    }
+  }),
   components: {
-    'layout-flex': Layout2Flex
+    'layout-flex': Layout2Flex,
+    draggable
   }
 }
 </script>

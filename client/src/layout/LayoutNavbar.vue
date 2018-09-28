@@ -27,13 +27,13 @@
         <label class="nav-item navbar-text navbar-search-box p-0 active">
           <i class="ion ion-ios-search navbar-icon align-middle"></i>
           <span class="navbar-search-input pl-2">
-            <input type="text" class="form-control navbar-text mx-2" placeholder="Search..." style="width:200px">
+            <input type="text" class="form-control navbar-text mx-2" placeholder="Поиск..." style="width:200px">
           </span>
         </label>
       </b-navbar-nav>
 
       <b-navbar-nav class="align-items-lg-center ml-auto">
-        <b-nav-item-dropdown no-caret :right="!isRTL" class="demo-navbar-notifications mr-lg-3">
+        <!-- <b-nav-item-dropdown no-caret :right="!isRTL" class="demo-navbar-notifications mr-lg-3">
           <template slot="button-content">
             <i class="ion ion-md-notifications-outline navbar-icon align-middle"></i>
             <span class="badge badge-primary badge-dot indicator"></span>
@@ -90,9 +90,9 @@
           </b-list-group>
 
           <a href="javascript:void(0)" class="d-block text-center text-light small p-2 my-1">Show all notifications</a>
-        </b-nav-item-dropdown>
+        </b-nav-item-dropdown> -->
 
-        <b-nav-item-dropdown no-caret :right="!isRTL" class="demo-navbar-messages mr-lg-3">
+        <!-- <b-nav-item-dropdown no-caret :right="!isRTL" class="demo-navbar-messages mr-lg-3">
           <template slot="button-content">
             <i class="ion ion-ios-mail navbar-icon align-middle"></i>
             <span class="badge badge-primary badge-dot indicator"></span>
@@ -145,24 +145,24 @@
           </b-list-group>
 
           <a href="javascript:void(0)" class="d-block text-center text-light small p-2 my-1">Show all messages</a>
-        </b-nav-item-dropdown>
+        </b-nav-item-dropdown> -->
 
         <!-- Divider -->
-        <div class="nav-item d-none d-lg-block text-big font-weight-light line-height-1 opacity-25 mr-3 ml-1">|</div>
+        <!-- <div class="nav-item d-none d-lg-block text-big font-weight-light line-height-1 opacity-25 mr-3 ml-1">|</div> -->
 
         <b-nav-item-dropdown :right="!isRTL" class="demo-navbar-user">
           <template slot="button-content">
             <span class="d-inline-flex flex-lg-row-reverse align-items-center align-middle">
               <img src="/static/img/avatars/1.png" alt class="d-block ui-w-30 rounded-circle">
-              <span class="px-1 mr-lg-2 ml-2 ml-lg-0">Mike Greene</span>
+              <span class="px-1 mr-lg-2 ml-2 ml-lg-0">Иванов Иван</span>
             </span>
           </template>
 
-          <b-dd-item><i class="ion ion-ios-person text-lightest"></i> &nbsp; My profile</b-dd-item>
-          <b-dd-item><i class="ion ion-ios-mail text-lightest"></i> &nbsp; Messages</b-dd-item>
-          <b-dd-item><i class="ion ion-md-settings text-lightest"></i> &nbsp; Account settings</b-dd-item>
+          <b-dd-item><i class="ion ion-ios-person text-lightest"></i> &nbsp; Мой профиль</b-dd-item>
+          <b-dd-item><i class="ion ion-ios-mail text-lightest"></i> &nbsp; Сообщения</b-dd-item>
+          <b-dd-item><i class="ion ion-ios-list-box text-lightest"></i> &nbsp; Задачи</b-dd-item>
           <b-dd-divider />
-          <b-dd-item><i class="ion ion-ios-log-out text-danger"></i> &nbsp; Log Out</b-dd-item>
+          <b-dd-item @click="onLogoutClick"><i class="ion ion-ios-log-out text-danger"></i> &nbsp; Выйти</b-dd-item>
         </b-nav-item-dropdown>
       </b-navbar-nav>
     </b-collapse>
@@ -187,6 +187,10 @@ export default {
 
     getLayoutNavbarBg () {
       return this.layoutNavbarBg
+    },
+    onLogoutClick () {
+      localStorage.removeItem('authenticated')
+      this.$router.push('/login')
     }
   }
 }
