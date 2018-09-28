@@ -4,9 +4,9 @@
     "connector": "memory"
   },
   "ipotekark": {
-    "host": "localhost",
+    "host": "http://91.214.130.109",
     "port": 27017,
-    "url": "mongodb://localhost/ipotekark",
+    "url": "mongodb://91.214.130.109/ipotekark",
     "database": "ipotekark",
     "password": "",
     "name": "ipotekark",

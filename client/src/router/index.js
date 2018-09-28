@@ -56,19 +56,20 @@ router.afterEach(() => {
 // })
 
 router.beforeEach((to, from, next) => {
-  if (to.matched.some(record => record.meta.authenticated)) {
-    if (!localStorage.getItem('authenticated')) {
-      next({
-        path: '/login',
-        query: { redirect: to.fullPath }
-      })
-      document.body.classList.add('app-loading')
-    } else {
-      next()
-    }
-  } else {
-    next()
-  }
+  // if (to.matched.some(record => record.meta.authenticated)) {
+  //   if (!localStorage.getItem('authenticated')) {
+  //     next({
+  //       path: '/login',
+  //       query: { redirect: to.fullPath }
+  //     })
+  //     document.body.classList.add('app-loading')
+  //   } else {
+  //     next()
+  //   }
+  // } else {
+  //   next()
+  // }
+  document.body.classList.add('app-loading')
 })
 
 export default router
