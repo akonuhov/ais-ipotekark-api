@@ -4,9 +4,9 @@
     "connector": "memory"
   },
   "ipotekark": {
-    "host": "http://ais.ipotekark.ru",
+    "host": "localhost",
     "port": 27017,
-    "url": "mongodb://ais.ipotekark.ru/ipotekark",
+    "url": "mongodb://localhost/ipotekark",
     "database": "ipotekark",
     "password": "",
     "name": "ipotekark",
