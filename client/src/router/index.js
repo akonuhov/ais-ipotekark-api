@@ -47,28 +47,28 @@ router.afterEach(() => {
   globals().scrollTop(0, 0)
 })
 
-router.beforeEach((to, from, next) => {
-  // Set loading state
-  document.body.classList.add('app-loading')
-
-  // Add tiny timeout to finish page transition
-  setTimeout(() => next(), 10)
-})
-
 // router.beforeEach((to, from, next) => {
-//   if (to.matched.some(record => record.meta.authenticated)) {
-//     if (!localStorage.getItem('authenticated')) {
-//       next({
-//         path: '/login',
-//         query: { redirect: to.fullPath }
-//       })
-//       document.body.classList.add('app-loading')
-//     } else {
-//       next()
-//     }
-//   } else {
-//     next()
-//   }
+//   // Set loading state
+//   document.body.classList.add('app-loading')
+//
+//   // Add tiny timeout to finish page transition
+//   setTimeout(() => next(), 10)
 // })
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.authenticated)) {
+    if (!localStorage.getItem('authenticated')) {
+      next({
+        path: '/login',
+        query: { redirect: to.fullPath }
+      })
+      document.body.classList.add('app-loading')
+    } else {
+      next()
+    }
+  } else {
+    next()
+  }
+})
 
 export default router

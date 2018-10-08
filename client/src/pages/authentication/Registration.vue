@@ -83,7 +83,7 @@ export default {
   }),
   methods: {
     onSubmitLogin () {
-      axios.post('http://91.214.130.109:3000/api/users', this.credentials)
+      axios.post('http://localhost:3000/api/users', this.credentials)
         .then(res => {
           console.log(res)
         })

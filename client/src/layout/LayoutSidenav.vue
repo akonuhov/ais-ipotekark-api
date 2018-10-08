@@ -16,10 +16,10 @@
       <sidenav-header class="small text-uppercase font-weight-semibold">Главная</sidenav-header>
       <sidenav-router-link icon="ion ion-ios-desktop" to="/" :exact="true">Доска задач</sidenav-router-link>
       <sidenav-router-link icon="ion ion-ios-list-box" to="/task-list" :exact="true">Список задач</sidenav-router-link>
-      <!-- <sidenav-divider class="mb-1"/>
+      <sidenav-divider class="mb-1"/>
       <sidenav-header class="small text-uppercase font-weight-semibold">объекты</sidenav-header>
-      <sidenav-router-link icon="ion ion-ios-albums" to="/credit-object" :exact="true">Кредитные дела</sidenav-router-link> -->
-
+      <sidenav-router-link icon="ion ion-ios-albums" to="/credit-object" :exact="true">Кредитные дела</sidenav-router-link>
+      <sidenav-router-link icon="ion ion-ios-albums" to="/borrower" :exact="true">Заемщики</sidenav-router-link>
     </div>
   </sidenav>
 </template>
