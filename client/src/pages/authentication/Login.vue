@@ -70,7 +70,6 @@
 <style src="@/vendor/styles/pages/authentication.scss" lang="scss"></style>
 
 <script>
-import axios from 'axios'
 export default {
   name: 'pages-authentication-login',
   metaInfo: {
@@ -84,15 +83,7 @@ export default {
   }),
   methods: {
     onSubmitLogin () {
-      axios.post('http://ais.ipotekark.ru:3000/api/users/login', this.credentials, {
-        mode: 'no-cors',
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Content-Type': 'application/json'
-        },
-        withCredentials: true,
-        credentials: 'same-origin'
-      })
+      this.$http.post('/api/users/login', this.credentials)
         .then(res => {
           localStorage.setItem('token', res.id)
           localStorage.setItem('userId', res.userId)

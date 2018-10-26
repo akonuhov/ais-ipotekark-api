@@ -83,7 +83,7 @@ export default {
   }),
   methods: {
     onSubmitLogin () {
-      this.$http.post('http://ais.ipotekark.ru:3000/api/users', this.credentials)
+      this.$http.post('/api/users', this.credentials)
         .then(res => {
           console.log(res)
         })

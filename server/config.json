@@ -1,6 +1,6 @@
 {
   "restApiRoot": "/api",
-  "host": "localhost",
+  "host": "ais.ipotekark.ru",
   "port": 3000,
   "remoting": {
     "context": false,
