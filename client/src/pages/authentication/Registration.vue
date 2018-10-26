@@ -68,7 +68,6 @@
 <style src="@/vendor/styles/pages/authentication.scss" lang="scss"></style>
 
 <script>
-import axios from 'axios'
 export default {
   name: 'pages-authentication-login',
   metaInfo: {
@@ -84,7 +83,7 @@ export default {
   }),
   methods: {
     onSubmitLogin () {
-      axios.post('http://ais.ipotekark.ru:3000/api/users', this.credentials)
+      this.$http.post('http://ais.ipotekark.ru:3000/api/users', this.credentials)
         .then(res => {
           console.log(res)
         })

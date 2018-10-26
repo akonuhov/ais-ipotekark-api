@@ -84,7 +84,15 @@ export default {
   }),
   methods: {
     onSubmitLogin () {
-      axios.post('http://91.214.130.109:3000/api/users/login', this.credentials)
+      axios.post('http://ais.ipotekark.ru:3000/api/users/login', this.credentials, {
+        mode: 'no-cors',
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json'
+        },
+        withCredentials: true,
+        credentials: 'same-origin'
+      })
         .then(res => {
           localStorage.setItem('token', res.id)
           localStorage.setItem('userId', res.userId)
