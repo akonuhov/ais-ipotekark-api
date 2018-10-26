@@ -40,7 +40,7 @@
             <!-- Form -->
             <form class="my-5">
               <b-form-group label="Имя">
-                <b-input v-model="credentials.name" />
+                <b-input v-model="credentials.username" />
               </b-form-group>
               <b-form-group label="Email">
                 <b-input v-model="credentials.email" />
@@ -76,14 +76,15 @@ export default {
   },
   data: () => ({
     credentials: {
-      name: '',
+      username: '',
       email: '',
+      emailVerified: false,
       password: ''
     }
   }),
   methods: {
     onSubmitLogin () {
-      axios.post('http://91.214.130.109:3000/api/users', this.credentials)
+      axios.post('http://ais.ipotekark.ru:3000/api/users', this.credentials)
         .then(res => {
           console.log(res)
         })
