@@ -25,7 +25,8 @@
                 </div>
               </draggable>
               <b-card-footer class="text-center py-2">
-                <a href="javascript:void(0)"><i class="ion ion-md-add"></i>&nbsp; Добавить задачу</a>
+                <a href="javascript:void(0)" v-b-modal.task-create-popup><i class="ion ion-md-add"></i>&nbsp; Добавить задачу</a>
+                <task-create-popup modal-id="task-create-popup" />
               </b-card-footer>
             </b-card>
           </div>
@@ -81,7 +82,7 @@
                   </span>
                 </div>
               </draggable>
-              <b-card-footer class="text-center py-2">
+              <b-card-footer class="text-center py-2" v-if="doneTasks.length > 0">
                 <a href="javascript:void(0)"><i class="ion ion-md-close"></i>&nbsp; Очистить выполненные задачи</a>
               </b-card-footer>
             </b-card>
@@ -93,45 +94,23 @@
 </template>
 
 <script>
-import Layout2Flex from '@/layout/Layout2'
+import LayoutFlex from '@/layout/Layout2'
+import TaskCreatePopup from '@/components/task/create.vue'
 import draggable from 'vuedraggable'
 export default {
   name: 'PageMain',
   data: () => ({
     // Tags
     tags: {
-      clients: { title: 'Clients', color: 'success' },
-      important: { title: 'Important', color: 'danger' },
-      social: { title: 'Social', color: 'info' },
-      other: { title: 'Other', color: 'warning' }
+      clients: { title: 'Срочное', color: 'danger' },
+      important: { title: 'Среднее', color: 'success' },
+      social: { title: 'Несрочное', color: 'info' },
+      other: { title: 'Долгое', color: 'warning' }
     },
-
-    newTasks: [
-      { text: 'New blog layout' },
-      { text: 'Create UI design model', tags: ['clients'] },
-      { text: 'Another icon set' },
-      { text: 'iOS application design mockups' }
-    ],
-
-    inProgressTasks: [
-      { text: 'New icons set for an iOS app', tags: ['other'] },
-      { text: 'Create ad campaign banners set' }
-    ],
-
-    testTasks: [
-      { text: 'Help Web devs with HTML integration' },
-      { text: 'UI/UX design review', tags: ['important'] },
-      { text: 'Marketing campaign review' },
-      { text: 'Fix website issues on mobile' },
-      { text: 'Create landing page for a new app', tags: ['social'] }
-    ],
-
-    doneTasks: [
-      { text: 'Edit the draft for the icons', tags: ['important'] },
-      { text: 'Edit the draft for the icons' },
-      { text: 'Edit the draft for the icons' }
-    ],
-
+    newTasks: [],
+    inProgressTasks: [],
+    testTasks: [],
+    doneTasks: [],
     draggableOptions: {
       animation: 150,
       group: {
@@ -142,7 +121,8 @@ export default {
     }
   }),
   components: {
-    'layout-flex': Layout2Flex,
+    LayoutFlex,
+    TaskCreatePopup,
     draggable
   }
 }

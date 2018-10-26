@@ -23,14 +23,26 @@ const router = new Router({
       authenticated: true
     }
   }, {
-    path: '/task-list',
+    path: '/tasks-list',
     component: () => import('@/pages/main/TaskList'),
     meta: {
       authenticated: true
     }
   }, {
-    path: '/credit-object',
-    component: () => import('@/pages/credit-object/CreditObject'),
+    path: '/credit-objects',
+    component: () => import('@/pages/credit-object/Index.vue'),
+    meta: {
+      authenticated: true
+    }
+  }, {
+    path: '/borrowers',
+    component: () => import('@/pages/borrower/Index.vue'),
+    meta: {
+      authenticated: true
+    }
+  }, {
+    path: '/social-payments',
+    component: () => import('@/pages/social-payment/Index.vue'),
     meta: {
       authenticated: true
     }

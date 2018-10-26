@@ -84,7 +84,7 @@ export default {
   }),
   methods: {
     onSubmitLogin () {
-      axios.post('http://localhost:3000/api/users/login', this.credentials)
+      axios.post('http://91.214.130.109:3000/api/users/login', this.credentials)
         .then(res => {
           localStorage.setItem('token', res.id)
           localStorage.setItem('userId', res.userId)

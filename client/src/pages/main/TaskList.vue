@@ -8,33 +8,33 @@
         <div class="ui-bordered mb-4">
           <div class="d-flex align-items-center w-100 py-2 px-3" :class="{'bg-lighter font-weight-bold': curView == 'inbox'}">
             <i class="ion ion-ios-filing ui-w-20 mr-1"></i>
-            <a href="javascript:void(0)" class="d-block text-dark">Inbox</a>
+            <a href="javascript:void(0)" class="d-block text-dark">Сегодня</a>
           </div>
           <div class="d-flex align-items-center w-100 py-2 px-3" :class="{'bg-lighter font-weight-bold': curView == 'today'}">
             <i class="ion ion-md-calendar ui-w-20 mr-1"></i>
-            <a href="javascript:void(0)" class="d-block text-dark">Today</a>
+            <a href="javascript:void(0)" class="d-block text-dark">Завтра</a>
           </div>
           <div class="d-flex align-items-center w-100 py-2 px-3" :class="{'bg-lighter font-weight-bold': curView == '7days'}">
             <i class="ion ion-ios-calendar ui-w-20 mr-1"></i>
-            <a href="javascript:void(0)" class="d-block text-dark">Next 7 days</a>
+            <a href="javascript:void(0)" class="d-block text-dark">Неделя</a>
           </div>
 
           <ul class="nav nav-sm nav-tabs tabs-alt nav-justified mt-3">
-            <b-nav-item :active="curTab === 'projects'" @click="curTab = 'projects'">Projects</b-nav-item>
-            <b-nav-item :active="curTab === 'tags'" @click="curTab = 'tags'">Tags</b-nav-item>
+            <b-nav-item :active="curTab === 'projects'" @click="curTab = 'projects'">Сущности</b-nav-item>
+            <b-nav-item :active="curTab === 'tags'" @click="curTab = 'tags'">Теги</b-nav-item>
           </ul>
 
           <div v-if="curTab === 'projects'" class="py-3">
             <div class="py-2 px-3" v-for="project in projects">
               <a href="javascript:void(0)" class="text-dark">{{project.name}}</a>
             </div>
-            <a href="javascript:void(0)" class="d-block text-light small py-2 px-3"><i class="ion ion-md-add"></i>&nbsp; Add project</a>
+            <a href="javascript:void(0)" class="d-block text-light small py-2 px-3"><i class="ion ion-md-add"></i>&nbsp; Добавить проект</a>
           </div>
           <div v-if="curTab === 'tags'" class="py-3">
             <div class="py-2 px-3" v-for="tag in tags">
               <a href="javascript:void(0)" class="text-dark"><span class="badge badge-dot" :class="`badge-${tag.color}`"></span> &nbsp; {{tag.title}}</a>
             </div>
-            <a href="javascript:void(0)" class="d-block text-light small py-2 px-3"><i class="ion ion-md-add"></i>&nbsp; Add tag</a>
+            <a href="javascript:void(0)" class="d-block text-light small py-2 px-3"><i class="ion ion-md-add"></i>&nbsp; Добавить тег</a>
           </div>
         </div>
 
@@ -43,8 +43,8 @@
         <b-card no-body>
 
           <b-card-header class="py-3">
-            <b-btn variant="primary"><i class="ion ion-md-add"></i>&nbsp; Add task</b-btn>&nbsp;
-            <b-btn variant="default md-btn-flat"><i class="ion ion-md-close"></i>&nbsp; Clear</b-btn>
+            <b-btn variant="primary" @click="onClickCreateTask"><i class="ion ion-md-add"></i>&nbsp; Добавить задачу</b-btn>&nbsp;
+            <b-btn variant="default md-btn-flat"><i class="ion ion-md-close"></i>&nbsp; Очистить</b-btn>
           </b-card-header>
 
           <div v-for="(section, index) in sectionsData">
@@ -68,8 +68,8 @@
 
                     <b-dropdown variant="default btn-xs btn-round icon-btn borderless md-btn-flat hide-arrow" class="task-list-actions" :right="!isRTL">
                       <template slot="button-content"><i class="ion ion-ios-more"></i></template>
-                      <b-dropdown-item href="javascript:void(0)">Edit</b-dropdown-item>
-                      <b-dropdown-item href="javascript:void(0)">Remove</b-dropdown-item>
+                      <b-dropdown-item href="javascript:void(0)">Редактировать</b-dropdown-item>
+                      <b-dropdown-item href="javascript:void(0)">Удалить</b-dropdown-item>
                     </b-dropdown>
                   </div>
 
@@ -89,7 +89,7 @@
 <style src="@/vendor/libs/vue-flatpickr-component/vue-flatpickr-component.scss" lang="scss"></style>
 
 <script>
-import Layout2Flex from '@/layout/Layout2'
+import LayoutFlex from '@/layout/Layout2'
 import flatPickr from 'vue-flatpickr-component'
 import draggable from 'vuedraggable'
 export default {
@@ -98,7 +98,7 @@ export default {
     title: 'Ticket list - Pages'
   },
   components: {
-    'layout-flex': Layout2Flex,
+    LayoutFlex,
     flatPickr,
     draggable
   },
@@ -109,47 +109,25 @@ export default {
     curTab: 'projects',
 
     // Projects
-    projects: [
-      { name: 'Website design' },
-      { name: 'SEO improvement' },
-      { name: 'example.com redesign' }
-    ],
+    projects: [],
 
     // Tags
     tags: {
-      clients: { title: 'Clients', color: 'success' },
-      important: { title: 'Important', color: 'danger' },
-      social: { title: 'Social', color: 'info' },
-      other: { title: 'Other', color: 'warning' }
+      clients: { title: 'Срочное', color: 'danger' },
+      important: { title: 'Среднее', color: 'success' },
+      social: { title: 'Несрочное', color: 'info' },
+      other: { title: 'Долгое', color: 'warning' }
     },
 
     sectionsData: [{
-      title: 'Today',
-      tasks: [
-        { text: 'Buy products', tags: ['other'], left: '58 mins', completed: false },
-        { text: 'Reply to emails', completed: false },
-        { text: 'Write blog post', left: '20 hours', completed: false },
-        { text: 'Wash my car', completed: true }
-      ]
+      title: 'Сегодня',
+      tasks: []
     }, {
-      title: 'Tomorrow',
-      tasks: [
-        { text: 'Buy antivirus', tags: ['other'], completed: false },
-        { text: 'Jane\'s Happy Birthday', completed: false },
-        { text: 'Call mom', completed: false }
-      ]
+      title: 'Завтра',
+      tasks: []
     }, {
-      title: 'Next week',
-      tasks: [
-        { text: 'New blog layout', tags: ['clients'], completed: false },
-        { text: 'Create UI design model', completed: false },
-        { text: 'New icons set for an iOS app', completed: false },
-        { text: 'Create ad campaign banners set', completed: false },
-        { text: 'Edit the draft for the icons', completed: false },
-        { text: 'Fix validation issues and commit', tags: ['important'], completed: false },
-        { text: 'Support tickets list doesn\'t support commas', completed: false },
-        { text: 'Help Web devs with HTML integration', completed: false }
-      ]
+      title: 'Неделя',
+      tasks: []
     }],
 
     draggableOptions: {
@@ -161,6 +139,11 @@ export default {
         pull: true
       }
     }
-  })
+  }),
+  methods: {
+    onClickCreateTask () {
+      window.print()
+    }
+  }
 }
 </script>
