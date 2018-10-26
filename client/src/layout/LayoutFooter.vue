@@ -6,9 +6,8 @@
       </div>
       <div>
         <a href="javascript:void(0)" class="footer-link pt-3">Доска задач</a>
-        <a href="javascript:void(0)" class="footer-link pt-3 ml-4">Почта</a>
         <a href="javascript:void(0)" class="footer-link pt-3 ml-4">Чат</a>
-        <a href="javascript:void(0)" class="footer-link pt-3 ml-4">Отделы &amp; Сотрудники</a>
+        <a href="javascript:void(0)" class="footer-link pt-3 ml-4">Сотрудники</a>
       </div>
     </div>
   </nav>
