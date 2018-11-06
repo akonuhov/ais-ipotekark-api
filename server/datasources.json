@@ -8,9 +8,9 @@
     "port": 27017,
     "url": "mongodb://ais.ipotekark.ru/ipotekark",
     "database": "ipotekark",
-    "password": "ipotekark@2017",
+    "password": "",
     "name": "ipotekark",
-    "user": "admin",
+    "user": "",
     "connector": "mongodb"
   }
 }

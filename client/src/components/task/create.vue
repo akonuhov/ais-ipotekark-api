@@ -1,11 +1,19 @@
 <template lang="html">
-  <b-modal :id="modalId">
+  <b-modal :id="modalId" cancel-title="Отмена" ok-title="Добавить">
     <div slot="modal-title">
       <h3>Добавить задачу</h3>
     </div>
     <b-form class="text-left">
       <b-form-group label="Заголовок">
-        <b-input type="email" placeholder="Заголовок" />
+        <b-input type="text" placeholder="Заголовок" />
+      </b-form-group>
+      <b-form-group label="Исполнитель">
+        <multiselect
+          v-model="task.executor"
+          :options="taskExecutorOptions"
+          :searchable="false"
+          :show-labels="false"
+          placeholder="Исполнитель" />
       </b-form-group>
       <b-form-group label="Описание">
         <b-textarea :rows="3" />
@@ -17,14 +25,6 @@
           :searchable="false"
           :show-labels="false"
           placeholder="Срочность" />
-      </b-form-group>
-      <b-form-group label="Исполнитель">
-        <multiselect
-          v-model="task.executor"
-          :options="taskExecutorOptions"
-          :searchable="false"
-          :show-labels="false"
-          placeholder="Исполнитель" />
       </b-form-group>
     </b-form>
   </b-modal>

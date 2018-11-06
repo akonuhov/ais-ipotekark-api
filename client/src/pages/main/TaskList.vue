@@ -43,8 +43,9 @@
         <b-card no-body>
 
           <b-card-header class="py-3">
-            <b-btn variant="primary" @click="onClickCreateTask"><i class="ion ion-md-add"></i>&nbsp; Добавить задачу</b-btn>&nbsp;
+            <b-btn variant="primary" v-b-modal.task-create-popup><i class="ion ion-md-add"></i>&nbsp; Добавить задачу</b-btn>&nbsp;
             <b-btn variant="default md-btn-flat"><i class="ion ion-md-close"></i>&nbsp; Очистить</b-btn>
+            <task-create-popup modal-id="task-create-popup" />
           </b-card-header>
 
           <div v-for="(section, index) in sectionsData">
@@ -90,6 +91,7 @@
 
 <script>
 import LayoutFlex from '@/layout/Layout2'
+import TaskCreatePopup from '@/components/task/create.vue'
 import flatPickr from 'vue-flatpickr-component'
 import draggable from 'vuedraggable'
 export default {
@@ -99,6 +101,7 @@ export default {
   },
   components: {
     LayoutFlex,
+    TaskCreatePopup,
     flatPickr,
     draggable
   },
@@ -139,11 +142,6 @@ export default {
         pull: true
       }
     }
-  }),
-  methods: {
-    onClickCreateTask () {
-      window.print()
-    }
-  }
+  })
 }
 </script>
