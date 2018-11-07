@@ -17,6 +17,9 @@ const router = new Router({
     path: '/registration',
     component: () => import('@/pages/authentication/Registration')
   }, {
+    path: '/profile',
+    component: () => import('@/pages/account/Index')
+  }, {
     path: '/',
     component: () => import('@/pages/main/Index'),
     meta: {
@@ -49,24 +52,6 @@ const router = new Router({
   }]
 })
 
-router.afterEach(() => {
-  // On small screens collapse sidenav
-  if (window.layoutHelpers && window.layoutHelpers.isSmallScreen() && !window.layoutHelpers.isCollapsed()) {
-    setTimeout(() => window.layoutHelpers.setCollapsed(true, true), 10)
-  }
-
-  // Scroll to top of the page
-  globals().scrollTop(0, 0)
-})
-
-// router.beforeEach((to, from, next) => {
-//   // Set loading state
-//   document.body.classList.add('app-loading')
-//
-//   // Add tiny timeout to finish page transition
-//   setTimeout(() => next(), 10)
-// })
-
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.authenticated)) {
     if (!localStorage.getItem('authenticated')) {
@@ -74,13 +59,21 @@ router.beforeEach((to, from, next) => {
         path: '/login',
         query: { redirect: to.fullPath }
       })
-      document.body.classList.add('app-loading')
+      // document.body.classList.add('app-loading')
     } else {
       next()
     }
   } else {
     next()
   }
+})
+
+router.afterEach(() => {
+  // document.body.classList.add('app-loading')
+  if (window.layoutHelpers && window.layoutHelpers.isSmallScreen() && !window.layoutHelpers.isCollapsed()) {
+    setTimeout(() => window.layoutHelpers.setCollapsed(true, true), 10)
+  }
+  globals().scrollTop(0, 0)
 })
 
 export default router

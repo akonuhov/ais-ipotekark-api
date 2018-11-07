@@ -15,7 +15,7 @@
 
 <script>
 export default {
-  name: 'app-layout-footer',
+  name: 'LayoutFooter',
 
   methods: {
     getLayoutFooterBg () {

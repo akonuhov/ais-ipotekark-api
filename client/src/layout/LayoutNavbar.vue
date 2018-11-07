@@ -158,7 +158,7 @@
             </span>
           </template>
 
-          <b-dd-item><i class="ion ion-ios-person text-lightest"></i> &nbsp; Мой профиль</b-dd-item>
+          <b-dd-item to="/profile"><i class="ion ion-ios-person text-lightest"></i> &nbsp; Мой профиль</b-dd-item>
           <b-dd-item><i class="ion ion-ios-mail text-lightest"></i> &nbsp; Сообщения</b-dd-item>
           <b-dd-item><i class="ion ion-ios-list-box text-lightest"></i> &nbsp; Задачи</b-dd-item>
           <b-dd-divider />
@@ -171,7 +171,7 @@
 
 <script>
 export default {
-  name: 'app-layout-navbar',
+  name: 'LayoutNavbar',
 
   props: {
     sidenavToggle: {

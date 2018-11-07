@@ -42,7 +42,7 @@
 <script>
 import { Sidenav, SidenavLink, SidenavRouterLink, SidenavMenu, SidenavHeader, SidenavBlock, SidenavDivider } from '@/vendor/libs/sidenav'
 export default {
-  name: 'app-layout-sidenav',
+  name: 'LayoutSidenav',
   components: {
     Sidenav,
     SidenavLink,

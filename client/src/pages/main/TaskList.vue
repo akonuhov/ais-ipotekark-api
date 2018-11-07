@@ -1,5 +1,5 @@
 <template>
-  <layout-flex>
+  <main-layout>
     <h4 class="font-weight-bold py-3 mb-4">Список задач</h4>
 
     <div class="row">
@@ -84,13 +84,13 @@
         </b-card>
       </div>
     </div>
-  </layout-flex>
+  </main-layout>
 </template>
 
 <style src="@/vendor/libs/vue-flatpickr-component/vue-flatpickr-component.scss" lang="scss"></style>
 
 <script>
-import LayoutFlex from '@/layout/Layout2'
+import MainLayout from '@/layout/MainLayout'
 import TaskCreatePopup from '@/components/task/create.vue'
 import flatPickr from 'vue-flatpickr-component'
 import draggable from 'vuedraggable'
@@ -100,7 +100,7 @@ export default {
     title: 'Ticket list - Pages'
   },
   components: {
-    LayoutFlex,
+    MainLayout,
     TaskCreatePopup,
     flatPickr,
     draggable

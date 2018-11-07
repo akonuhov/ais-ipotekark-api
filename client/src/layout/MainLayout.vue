@@ -1,15 +1,14 @@
 <template>
-  <div class="layout-wrapper layout-1">
+  <div class="layout-wrapper layout-2">
     <div class="layout-inner">
+      <layout-sidenav />
       <div class="layout-container">
-        <app-layout-sidenav />
-
+        <layout-navbar />
         <div class="layout-content">
-          <div class="router-transitions container-fluid d-flex align-items-stretch flex-grow-1 p-0">
-            <router-view />
+          <div class="router-transitions container-fluid flex-grow-1 container-p-y">
+            <slot></slot>
           </div>
-
-          <app-layout-footer />
+          <layout-footer />
         </div>
       </div>
     </div>
@@ -18,14 +17,18 @@
 </template>
 
 <script>
+import LayoutNavbar from './LayoutNavbar'
 import LayoutSidenav from './LayoutSidenav'
 import LayoutFooter from './LayoutFooter'
+import LayoutBlank from './LayoutBlank'
 
 export default {
-  name: 'app-layout-without-navbar',
+  name: 'app-layout-2',
   components: {
-    'app-layout-sidenav': LayoutSidenav,
-    'app-layout-footer': LayoutFooter
+    LayoutNavbar,
+    LayoutSidenav,
+    LayoutFooter,
+    LayoutBlank
   },
 
   mounted () {

@@ -1,5 +1,5 @@
 <template lang="html">
-  <layout-flex>
+  <main-layout>
     <div class="row">
       <div class="col-12">
         <h4 class="font-weight-bold py-3 mb-4">Доска задач</h4>
@@ -90,11 +90,11 @@
         </div>
       </div>
     </div>
-  </layout-flex>
+  </main-layout>
 </template>
 
 <script>
-import LayoutFlex from '@/layout/Layout2'
+import MainLayout from '@/layout/MainLayout'
 import TaskCreatePopup from '@/components/task/create.vue'
 import draggable from 'vuedraggable'
 export default {
@@ -121,7 +121,7 @@ export default {
     }
   }),
   components: {
-    LayoutFlex,
+    MainLayout,
     TaskCreatePopup,
     draggable
   }
