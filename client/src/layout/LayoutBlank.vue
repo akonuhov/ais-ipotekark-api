@@ -6,6 +6,9 @@
 
 <script>
 export default {
-  name: 'LayoutBlank'
+  name: 'LayoutBlank',
+  props: {
+    title: String
+  }
 }
 </script>

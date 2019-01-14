@@ -19,7 +19,7 @@
       <sidenav-router-link icon="fas fa-id-card-alt" to="/users" :exact="true">Сотрудники</sidenav-router-link>
       <sidenav-divider class="mb-1"/>
       <sidenav-header class="small text-uppercase font-weight-semibold">Объекты</sidenav-header>
-      <sidenav-router-link icon="fas fa-donate" to="/credits-object" :exact="true">Кредитные дела</sidenav-router-link>
+      <sidenav-router-link icon="fas fa-donate" to="/credit-objects" :exact="true">Кредитные дела</sidenav-router-link>
       <sidenav-router-link icon="fas fa-address-card" to="/borrowers" :exact="true">Заемщики</sidenav-router-link>
       <sidenav-router-link icon="fas fa-piggy-bank" to="/social-payments" :exact="true">Социальные выплаты</sidenav-router-link>
       <sidenav-router-link icon="fas fa-user-cog" to="/providers" :exact="true">Застройщики</sidenav-router-link>
@@ -33,8 +33,8 @@
       <sidenav-router-link icon="fas fa-comments" to="/chat" :exact="true">Чат</sidenav-router-link>
       <sidenav-divider class="mb-1"/>
       <sidenav-header class="small text-uppercase font-weight-semibold">Журналы действий</sidenav-header>
-      <sidenav-router-link icon="ion ion-ios-albums" to="/operations" :exact="true">Операции</sidenav-router-link>
-      <sidenav-router-link icon="fas fa-user-secret" to="/access" :exact="true">Доступ</sidenav-router-link>
+      <sidenav-router-link icon="ion ion-ios-albums" to="/history-operations" :exact="true">Операции</sidenav-router-link>
+      <sidenav-router-link icon="fas fa-user-secret" to="/history-access" :exact="true">Доступ</sidenav-router-link>
     </div>
   </sidenav>
 </template>

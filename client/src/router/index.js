@@ -32,20 +32,68 @@ const router = new Router({
       authenticated: true
     }
   }, {
+    path: '/users',
+    component: () => import('@/pages/user/Index'),
+    meta: {
+      authenticated: true
+    }
+  }, {
     path: '/credit-objects',
-    component: () => import('@/pages/credit-object/Index.vue'),
+    component: () => import('@/pages/credit-object/Index'),
     meta: {
       authenticated: true
     }
   }, {
     path: '/borrowers',
-    component: () => import('@/pages/borrower/Index.vue'),
+    component: () => import('@/pages/borrower/Index'),
     meta: {
       authenticated: true
     }
   }, {
     path: '/social-payments',
-    component: () => import('@/pages/social-payment/Index.vue'),
+    component: () => import('@/pages/social-payment/Index'),
+    meta: {
+      authenticated: true
+    }
+  }, {
+    path: '/providers',
+    component: () => import('@/pages/provider/Index'),
+    meta: {
+      authenticated: true
+    }
+  }, {
+    path: '/evaluators',
+    component: () => import('@/pages/evaluator/Index'),
+    meta: {
+      authenticated: true
+    }
+  }, {
+    path: '/documents',
+    component: () => import('@/pages/document/Index'),
+    meta: {
+      authenticated: true
+    }
+  }, {
+    path: '/templates',
+    component: () => import('@/pages/document/Template'),
+    meta: {
+      authenticated: true
+    }
+  }, {
+    path: '/history-operations',
+    component: () => import('@/pages/history/Operation'),
+    meta: {
+      authenticated: true
+    }
+  }, {
+    path: '/history-access',
+    component: () => import('@/pages/history/Access'),
+    meta: {
+      authenticated: true
+    }
+  }, {
+    path: '/chat',
+    component: () => import('@/pages/chat/Index'),
     meta: {
       authenticated: true
     }
@@ -59,17 +107,22 @@ router.beforeEach((to, from, next) => {
         path: '/login',
         query: { redirect: to.fullPath }
       })
-      // document.body.classList.add('app-loading')
     } else {
-      next()
+      document.body.classList.add('app-loading')
+      setTimeout(() => next(), 10)
     }
   } else {
-    next()
+    document.body.classList.add('app-loading')
+    setTimeout(() => next(), 10)
   }
 })
 
 router.afterEach(() => {
-  // document.body.classList.add('app-loading')
+  const splashScreen = document.querySelector('.app-splash-screen')
+  if (splashScreen) {
+    splashScreen.style.opacity = 0
+    setTimeout(() => splashScreen && splashScreen.parentNode.removeChild(splashScreen), 300)
+  }
   if (window.layoutHelpers && window.layoutHelpers.isSmallScreen() && !window.layoutHelpers.isCollapsed()) {
     setTimeout(() => window.layoutHelpers.setCollapsed(true, true), 10)
   }

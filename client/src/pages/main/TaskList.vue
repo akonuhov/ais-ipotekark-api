@@ -1,7 +1,5 @@
 <template>
-  <main-layout>
-    <h4 class="font-weight-bold py-3 mb-4">Список задач</h4>
-
+  <main-layout title="Список задач">
     <div class="row">
       <div class="col-md-4 col-lg-4 col-xl-3">
 
@@ -43,9 +41,9 @@
         <b-card no-body>
 
           <b-card-header class="py-3">
-            <b-btn variant="primary" v-b-modal.task-create-popup><i class="ion ion-md-add"></i>&nbsp; Добавить задачу</b-btn>&nbsp;
+            <b-btn variant="primary" v-b-modal.task-create-modal><i class="ion ion-md-add"></i>&nbsp; Добавить задачу</b-btn>&nbsp;
             <b-btn variant="default md-btn-flat"><i class="ion ion-md-close"></i>&nbsp; Очистить</b-btn>
-            <task-create-popup modal-id="task-create-popup" />
+            <task-create-modal modal-id="task-create-modal" />
           </b-card-header>
 
           <div v-for="(section, index) in sectionsData">
@@ -91,17 +89,17 @@
 
 <script>
 import MainLayout from '@/layout/MainLayout'
-import TaskCreatePopup from '@/components/task/create.vue'
+import TaskCreateModal from '@/components/task/CreateModal'
 import flatPickr from 'vue-flatpickr-component'
 import draggable from 'vuedraggable'
 export default {
-  name: 'task-list',
+  name: 'PageTaskList',
   metaInfo: {
     title: 'Ticket list - Pages'
   },
   components: {
     MainLayout,
-    TaskCreatePopup,
+    TaskCreateModal,
     flatPickr,
     draggable
   },

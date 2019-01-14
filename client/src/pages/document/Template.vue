@@ -1,5 +1,5 @@
 <template lang="html">
-  <main-layout title="Список кредитных дел">
+  <main-layout title="Список шаблонов">
     <b-card no-body>
       <b-card-body>
         <div class="row">
@@ -75,24 +75,18 @@
 import flatPickr from 'vue-flatpickr-component'
 import MainLayout from '@/layout/MainLayout'
 export default {
-  name: 'PageCreditObgectsList',
+  name: 'PageTemapltesList',
   components: {
     MainLayout,
     flatPickr
   },
   data: () => ({
-    searchKeys: ['id', 'account', 'email', 'name'],
+    searchKeys: ['Наименование шаблона'],
     sortBy: 'id',
     sortDesc: false,
     perPage: 10,
     fields: [
-      { key: 'Номер', sortable: true, tdClass: 'align-middle' },
-      { key: 'Дата', sortable: true, tdClass: 'align-middle' },
-      { key: 'Заемщик', sortable: true, tdClass: 'align-middle' },
-      { key: 'Застройщик', sortable: true, tdClass: 'align-middle' },
-      { key: 'Сумма займа', sortable: true, tdClass: 'align-middle' },
-      { key: 'Менеджер', sortable: true, tdClass: 'align-middle' },
-      { key: 'Статус', sortable: true, tdClass: 'align-middle' },
+      { key: 'Наименование шаблона', sortable: true, tdClass: 'align-middle' },
       { key: 'actions', label: ' ', tdClass: 'text-nowrap align-middle text-center' }
     ],
 

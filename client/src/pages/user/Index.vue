@@ -1,5 +1,5 @@
 <template lang="html">
-  <main-layout title="Список кредитных дел">
+  <main-layout title="Список сотрудников">
     <b-card no-body>
       <b-card-body>
         <div class="row">
@@ -75,7 +75,7 @@
 import flatPickr from 'vue-flatpickr-component'
 import MainLayout from '@/layout/MainLayout'
 export default {
-  name: 'PageCreditObgectsList',
+  name: 'PageUsersList',
   components: {
     MainLayout,
     flatPickr
@@ -86,13 +86,13 @@ export default {
     sortDesc: false,
     perPage: 10,
     fields: [
-      { key: 'Номер', sortable: true, tdClass: 'align-middle' },
-      { key: 'Дата', sortable: true, tdClass: 'align-middle' },
-      { key: 'Заемщик', sortable: true, tdClass: 'align-middle' },
-      { key: 'Застройщик', sortable: true, tdClass: 'align-middle' },
-      { key: 'Сумма займа', sortable: true, tdClass: 'align-middle' },
-      { key: 'Менеджер', sortable: true, tdClass: 'align-middle' },
-      { key: 'Статус', sortable: true, tdClass: 'align-middle' },
+      { key: 'ФИО', sortable: true, tdClass: 'align-middle' },
+      { key: 'Должность', sortable: true, tdClass: 'align-middle' },
+      { key: 'Дата рождения', sortable: true, tdClass: 'align-middle' },
+      { key: 'Дата принятия на работу', sortable: true, tdClass: 'align-middle' },
+      { key: 'Электронная почта', sortable: true, tdClass: 'align-middle' },
+      { key: 'Контактный телефон', sortable: true, tdClass: 'align-middle' },
+      { key: 'Роль', sortable: true, tdClass: 'align-middle' },
       { key: 'actions', label: ' ', tdClass: 'text-nowrap align-middle text-center' }
     ],
 

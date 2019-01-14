@@ -15,7 +15,7 @@
   transition: opacity .2s;
 
   body.app-loading & {
-    opacity: .75;
+    opacity: 0;
   }
 }
 

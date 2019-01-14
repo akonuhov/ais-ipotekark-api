@@ -69,7 +69,7 @@
 
 <script>
 export default {
-  name: 'pages-authentication-login',
+  name: 'PagesAuthenticationLogin',
   metaInfo: {
     title: 'Login'
   },

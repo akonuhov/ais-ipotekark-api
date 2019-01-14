@@ -159,8 +159,8 @@
           </template>
 
           <b-dd-item to="/profile"><i class="ion ion-ios-person text-lightest"></i> &nbsp; Мой профиль</b-dd-item>
-          <b-dd-item><i class="ion ion-ios-mail text-lightest"></i> &nbsp; Сообщения</b-dd-item>
-          <b-dd-item><i class="ion ion-ios-list-box text-lightest"></i> &nbsp; Задачи</b-dd-item>
+          <b-dd-item to="/chat"><i class="ion ion-ios-mail text-lightest"></i> &nbsp; Сообщения</b-dd-item>
+          <b-dd-item to="/tasks-list"><i class="ion ion-ios-list-box text-lightest"></i> &nbsp; Задачи</b-dd-item>
           <b-dd-divider />
           <b-dd-item @click="onLogoutClick"><i class="ion ion-ios-log-out text-danger"></i> &nbsp; Выйти</b-dd-item>
         </b-nav-item-dropdown>

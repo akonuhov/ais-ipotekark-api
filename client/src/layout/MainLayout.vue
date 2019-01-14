@@ -5,7 +5,12 @@
       <div class="layout-container">
         <layout-navbar />
         <div class="layout-content">
-          <div class="router-transitions container-fluid flex-grow-1 container-p-y">
+          <div class="container-fluid flex-grow-1 container-p-y">
+            <div class="row" v-if="title">
+              <div class="col-12">
+                <h4 class="font-weight-bold py-3 mb-4">{{ title }}</h4>
+              </div>
+            </div>
             <slot></slot>
           </div>
           <layout-footer />
@@ -30,17 +35,17 @@ export default {
     LayoutFooter,
     LayoutBlank
   },
-
+  props: {
+    title: String
+  },
   mounted () {
     this.layoutHelpers.init()
     this.layoutHelpers.update()
     this.layoutHelpers.setAutoUpdate(true)
   },
-
   beforeDestroy () {
     this.layoutHelpers.destroy()
   },
-
   methods: {
     closeSidenav () {
       this.layoutHelpers.setCollapsed(true)

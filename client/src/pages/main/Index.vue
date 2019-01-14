@@ -1,10 +1,5 @@
 <template lang="html">
-  <main-layout>
-    <div class="row">
-      <div class="col-12">
-        <h4 class="font-weight-bold py-3 mb-4">Доска задач</h4>
-      </div>
-    </div>
+  <main-layout title="Доска задач">
     <div class="row">
       <div class="col-12 mb-3">
         <div class="row">
@@ -25,8 +20,8 @@
                 </div>
               </draggable>
               <b-card-footer class="text-center py-2">
-                <a href="javascript:void(0)" v-b-modal.task-create-popup><i class="ion ion-md-add"></i>&nbsp; Добавить задачу</a>
-                <task-create-popup modal-id="task-create-popup" />
+                <a href="javascript:void(0)" v-b-modal.task-create-modal><i class="ion ion-md-add"></i>&nbsp; Добавить задачу</a>
+                <task-create-modal modal-id="task-create-modal" />
               </b-card-footer>
             </b-card>
           </div>
@@ -95,12 +90,11 @@
 
 <script>
 import MainLayout from '@/layout/MainLayout'
-import TaskCreatePopup from '@/components/task/create.vue'
+import TaskCreateModal from '@/components/task/CreateModal.vue'
 import draggable from 'vuedraggable'
 export default {
   name: 'PageMain',
   data: () => ({
-    // Tags
     tags: {
       clients: { title: 'Срочное', color: 'danger' },
       important: { title: 'Среднее', color: 'success' },
@@ -122,7 +116,7 @@ export default {
   }),
   components: {
     MainLayout,
-    TaskCreatePopup,
+    TaskCreateModal,
     draggable
   }
 }
