@@ -38,6 +38,12 @@ const router = new Router({
       authenticated: true
     }
   }, {
+    path: '/users/create',
+    component: () => import('@/pages/user/Create'),
+    meta: {
+      authenticated: true
+    }
+  }, {
     path: '/credit-objects',
     component: () => import('@/pages/credit-object/Index'),
     meta: {
@@ -56,14 +62,32 @@ const router = new Router({
       authenticated: true
     }
   }, {
+    path: '/social-payments/create',
+    component: () => import('@/pages/social-payment/Create'),
+    meta: {
+      authenticated: true
+    }
+  }, {
     path: '/providers',
     component: () => import('@/pages/provider/Index'),
     meta: {
       authenticated: true
     }
   }, {
+    path: '/providers/create',
+    component: () => import('@/pages/provider/Create'),
+    meta: {
+      authenticated: true
+    }
+  }, {
     path: '/evaluators',
     component: () => import('@/pages/evaluator/Index'),
+    meta: {
+      authenticated: true
+    }
+  }, {
+    path: '/evaluators/create',
+    component: () => import('@/pages/evaluator/Create'),
     meta: {
       authenticated: true
     }
@@ -108,11 +132,9 @@ router.beforeEach((to, from, next) => {
         query: { redirect: to.fullPath }
       })
     } else {
-      document.body.classList.add('app-loading')
       setTimeout(() => next(), 10)
     }
   } else {
-    document.body.classList.add('app-loading')
     setTimeout(() => next(), 10)
   }
 })

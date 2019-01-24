@@ -4,7 +4,7 @@
       <layout-sidenav />
       <div class="layout-container">
         <layout-navbar />
-        <div class="layout-content">
+        <div id="layout-content" class="layout-content">
           <div class="container-fluid flex-grow-1 container-p-y">
             <div class="row" v-if="title">
               <div class="col-12">
@@ -53,3 +53,9 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.app-loading {
+  background-color: #000;
+}
+</style>

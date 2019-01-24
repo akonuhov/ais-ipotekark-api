@@ -1,5 +1,25 @@
 <template lang="html">
   <main-layout title="Список сотрудников">
+    <div class="ui-bordered px-4 pt-4 mb-4">
+      <div class="form-row align-items-center">
+        <div class="col-md mb-4">
+          <label class="form-label">Должность</label>
+          <b-select v-model="filterPosition" :options="['Специалист', 'Менеджер', 'Администратор']" />
+        </div>
+        <div class="col-md mb-4">
+          <label class="form-label">Роль</label>
+          <b-select v-model="filterRole" :options="['Специалист', 'Менеджер', 'Администратор']" />
+        </div>
+        <div class="col-md col-xl-2 mb-4">
+          <label class="form-label d-none d-md-block">&nbsp;</label>
+          <b-btn variant="secondary" :block="true" :disabled="disabledButtonFilter">Показать</b-btn>
+        </div>
+        <div class="col-md col-xl-2 mb-4">
+          <label class="form-label d-none d-md-block">&nbsp;</label>
+          <b-btn variant="primary" :block="true" to="/users/create">Добавить</b-btn>
+        </div>
+      </div>
+    </div>
     <b-card no-body>
       <b-card-body>
         <div class="row">
@@ -7,7 +27,7 @@
             На странице: &nbsp;
             <b-select size="sm" v-model="perPage" :options="[10, 20, 30, 40, 50]" class="d-inline-block w-auto" />
           </div>
-          <div class="col">
+          <div class="col d-flex justify-content-end">
             <b-input size="sm" placeholder="Поиск..." class="d-inline-block w-auto float-sm-right" @input="filter($event)" />
           </div>
         </div>
@@ -15,7 +35,7 @@
       <hr class="border-light m-0">
       <div class="table-responsive">
         <b-table
-          :items="usersData"
+          :items="getUsersList"
           :fields="fields"
           :sort-by.sync="sortBy"
           :sort-desc.sync="sortDesc"
@@ -81,19 +101,22 @@ export default {
     flatPickr
   },
   data: () => ({
+    filterPosition: null,
+    filterRole: null,
     searchKeys: ['id', 'account', 'email', 'name'],
     sortBy: 'id',
     sortDesc: false,
     perPage: 10,
     fields: [
-      { key: 'ФИО', sortable: true, tdClass: 'align-middle' },
-      { key: 'Должность', sortable: true, tdClass: 'align-middle' },
-      { key: 'Дата рождения', sortable: true, tdClass: 'align-middle' },
-      { key: 'Дата принятия на работу', sortable: true, tdClass: 'align-middle' },
-      { key: 'Электронная почта', sortable: true, tdClass: 'align-middle' },
-      { key: 'Контактный телефон', sortable: true, tdClass: 'align-middle' },
-      { key: 'Роль', sortable: true, tdClass: 'align-middle' },
-      { key: 'actions', label: ' ', tdClass: 'text-nowrap align-middle text-center' }
+      { key: 'fio', label: 'ФИО', sortable: true, tdClass: 'align-middle' },
+      { key: 'password', label: 'Должность', sortable: true, tdClass: 'align-middle' },
+      { key: 'dataBirth', label: 'Дата рождения', sortable: true, tdClass: 'align-middle' },
+      { key: 'email', label: 'Дата принятия на работу', sortable: true, tdClass: 'align-middle' },
+      { key: 'position', label: 'Электронная почта', sortable: true, tdClass: 'align-middle' },
+      { key: 'phone', label: 'Контактный телефон', sortable: true, tdClass: 'align-middle' },
+      { key: 'employmentDate', label: 'Роль', sortable: true, tdClass: 'align-middle' },
+      { key: 'role', label: 'Роль', sortable: true, tdClass: 'align-middle' },
+      { key: 'actions', tdClass: 'text-nowrap align-middle text-center' }
     ],
 
     usersData: [],
@@ -108,6 +131,15 @@ export default {
     },
     totalPages () {
       return Math.ceil(this.totalItems / this.perPage)
+    },
+    disabledButtonFilter () {
+      if (this.filterPosition || this.filterRole) {
+        return true
+      }
+      return false
+    },
+    getUsersList () {
+      return this.$store.state.user.list
     }
   },
 

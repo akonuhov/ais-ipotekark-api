@@ -1,5 +1,25 @@
 <template lang="html">
   <main-layout title="Список социальных выплат">
+    <div class="ui-bordered px-4 pt-4 mb-4">
+      <div class="form-row align-items-center">
+        <div class="col-md mb-4">
+          <label class="form-label">Категория социальной выплаты</label>
+          <b-select />
+        </div>
+        <div class="col-md mb-4">
+          <label class="form-label">Заемщик</label>
+          <b-select />
+        </div>
+        <div class="col-md col-xl-2 mb-4">
+          <label class="form-label d-none d-md-block">&nbsp;</label>
+          <b-btn variant="secondary" :block="true">Показать</b-btn>
+        </div>
+        <div class="col-md col-xl-2 mb-4">
+          <label class="form-label d-none d-md-block">&nbsp;</label>
+          <b-btn variant="primary" :block="true" to="/social-payments/create">Добавить</b-btn>
+        </div>
+      </div>
+    </div>
     <b-card no-body>
       <b-card-body>
         <div class="row">
@@ -86,8 +106,8 @@ export default {
     sortDesc: false,
     perPage: 10,
     fields: [
-      { key: 'Категория соц. выплаты', sortable: true, tdClass: 'align-middle' },
-      { key: 'Заемщик', sortable: true, tdClass: 'align-middle' },
+      { key: 'category', label: 'Категория соц. выплаты', sortable: true, tdClass: 'align-middle' },
+      { key: 'borrower', label: 'Заемщик', sortable: true, tdClass: 'align-middle' },
       { key: 'actions', label: ' ', tdClass: 'text-nowrap align-middle text-center' }
     ],
 

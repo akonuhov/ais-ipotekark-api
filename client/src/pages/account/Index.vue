@@ -148,12 +148,5 @@ export default {
 </script>
 
 <style lang="scss">
-.card {
-  .Password {
-    max-width: 100%;
-    &__badge {
-      height: auto;
-    }
-  }
-}
+
 </style>

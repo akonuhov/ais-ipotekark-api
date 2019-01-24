@@ -1,5 +1,25 @@
 <template lang="html">
   <main-layout title="Список оценщиков">
+    <div class="ui-bordered px-4 pt-4 mb-4">
+      <div class="form-row align-items-center">
+        <div class="col-md mb-4">
+          <label class="form-label">Фильтр 1</label>
+          <b-select />
+        </div>
+        <div class="col-md mb-4">
+          <label class="form-label">Фильтр 2</label>
+          <b-select />
+        </div>
+        <div class="col-md col-xl-2 mb-4">
+          <label class="form-label d-none d-md-block">&nbsp;</label>
+          <b-btn variant="secondary" :block="true">Показать</b-btn>
+        </div>
+        <div class="col-md col-xl-2 mb-4">
+          <label class="form-label d-none d-md-block">&nbsp;</label>
+          <b-btn variant="primary" :block="true" to="/evaluators/create">Добавить</b-btn>
+        </div>
+      </div>
+    </div>
     <b-card no-body>
       <b-card-body>
         <div class="row">
@@ -86,7 +106,7 @@ export default {
     sortDesc: false,
     perPage: 10,
     fields: [
-      { key: 'Наименование с указанием ОГРН и местонахождения', sortable: true, tdClass: 'align-middle' },
+      { key: 'evaluatorObject.name', label: 'Наименование с указанием ОГРН и местонахождения', sortable: true, tdClass: 'align-middle' },
       { key: 'actions', label: ' ', tdClass: 'text-nowrap align-middle text-center' }
     ],
 

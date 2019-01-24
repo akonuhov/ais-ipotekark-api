@@ -92,7 +92,7 @@ export default {
       { key: 'Домашний телефон', sortable: true, tdClass: 'align-middle' },
       { key: 'Мобильный телефон', sortable: true, tdClass: 'align-middle' },
       { key: 'Email', sortable: true, tdClass: 'align-middle' },
-      { key: 'actions', label: ' ', tdClass: 'text-nowrap align-middle text-center' }
+      { key: 'actions', tdClass: 'text-nowrap align-middle text-center' }
     ],
 
     usersData: [],

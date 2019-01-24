@@ -1,9 +1,18 @@
 <template lang="html">
-  <h1>Create borrower</h1>
+  <main-layout title="Добавить сотрудника">
+  </main-layout>
 </template>
 
 <script>
+import MainLayout from '@/layout/MainLayout'
 export default {
+  name: 'PageUsersCreate',
+  components: {
+    MainLayout
+  },
+  data: () => ({
+
+  })
 }
 </script>
 
