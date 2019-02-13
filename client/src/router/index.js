@@ -50,8 +50,20 @@ const router = new Router({
       authenticated: true
     }
   }, {
+    path: '/credit-objects/create',
+    component: () => import('@/pages/credit-object/Create'),
+    meta: {
+      authenticated: true
+    }
+  }, {
     path: '/borrowers',
     component: () => import('@/pages/borrower/Index'),
+    meta: {
+      authenticated: true
+    }
+  }, {
+    path: '/borrowers/create',
+    component: () => import('@/pages/borrower/Create'),
     meta: {
       authenticated: true
     }
@@ -98,8 +110,20 @@ const router = new Router({
       authenticated: true
     }
   }, {
+    path: '/documents/create',
+    component: () => import('@/pages/document/Create'),
+    meta: {
+      authenticated: true
+    }
+  }, {
     path: '/templates',
-    component: () => import('@/pages/document/Template'),
+    component: () => import('@/pages/template/Index'),
+    meta: {
+      authenticated: true
+    }
+  }, {
+    path: '/templates/create',
+    component: () => import('@/pages/template/Create'),
     meta: {
       authenticated: true
     }
